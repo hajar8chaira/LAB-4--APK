@@ -1,11 +1,106 @@
 # Lab AB4 — Analyse statique d’un APK avec JADX GUI  
+
+# Task 1 — Préparer le Workspace et Vérifier l’APK
+
+---
+
+## 1. Création du dossier de travail
+<p align="center"> <img src="images/a1.png" width="800"> </p>
+
+Sous Windows, le dossier suivant a été créé :
+
+```powershell
+mkdir C:\APK-Analysis
+cd C:\APK-Analysis
+```
+
+Ce dossier centralise :
+
+- L’APK
+- Les fichiers DEX extraits
+- Le JAR généré
+- Les outils utilisés
+
+---
+
+## 2. Copie de l’APK
+
+Le fichier suivant a été placé dans le dossier :
+
+```
+UnCrackable-Level1.apk
+```
+
+Vérification de la présence du fichier :
+
+```powershell
+dir *.apk
+```
+
+---
+
+## 3. Vérification du format APK (archive ZIP)
+
+<p align="center"> <img src="images/a2.png" width="800"> </p>
+
+Un fichier APK est une archive ZIP. 
+Commande utilisée :
+
+```powershell
+Get-Content -Path .\UnCrackable-Level1.apk -TotalCount 4 | Format-Hex
+```
+
+Résultat observé :
+
+```
+50 4B 03 04
+```
+Confirmation que l’APK est une archive ZIP valide.
+
+---
+
+## 4. Liste du contenu de l’APK
+<p align="center"> <img src="images/a24.png" width="800"> </p>
+
+Commande utilisée :
+
+```powershell
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::OpenRead("UnCrackable-Level1.apk").Entries | Select-Object -First 20
+```
+
+Éléments observés :
+
+- AndroidManifest.xml
+- classes.dex
+- resources.arsc
+- META-INF/
+- res/
+
+Structure standard d’un APK Android confirmée.
+
+---
+
+## 5. Calcul du hash SHA-256
+<p align="center"> <img src="images/a21.png" width="800"> </p>
+Commande utilisée :
+
+```powershell
+Get-FileHash -Algorithm SHA256 .\UnCrackable-Level1.apk
+```
+
+Objectifs :
+
+- Assurer la traçabilité
+- Garantir l’intégrité du fichier
+- Permettre la reproductibilité de l’analyse
+
+
 ## Task 3 — Analyse du AndroidManifest et des ressources
 
 
 <p align="center"> <img src="images/a5.png" width="800"> </p>
 
-<p align="center"> <img src="images/a7.png" width="800"> </p>
-<p align="center"> <img src="images/a8.png" width="800"> </p>
 ## APK analysé
 
 - Nom du fichier : `UnCrackable-Level1.apk`
