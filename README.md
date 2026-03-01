@@ -1,8 +1,11 @@
 # Lab AB4 — Analyse statique d’un APK avec JADX GUI  
 ## Task 3 — Analyse du AndroidManifest et des ressources
 
----
 
+<p align="center"> <img src="images/a5.png" width="800"> </p>
+
+<p align="center"> <img src="images/a7.png" width="800"> </p>
+<p align="center"> <img src="images/a8.png" width="800"> </p>
 ## APK analysé
 
 - Nom du fichier : `UnCrackable-Level1.apk`
@@ -132,6 +135,8 @@ Cela représente un risque moyen si des données sensibles sont stockées.
 
 # 6. Analyse des ressources (strings.xml)
 
+<p align="center"> <img src="images/a6.png" width="800"> </p>
+
 Fichier analysé :  
 `res/values/strings.xml`
 
@@ -151,10 +156,11 @@ Fichier analysé :
 
 ---
 ##  Analyse des autres fichiers XML
-
 ---
 
 # 1. Analyse de activity_main.xml (Interface principale)
+
+<p align="center"> <img src="images/a7.png" width="800"> </p>
 
 Fichier analysé :  
 `res/layout/activity_main.xml`
@@ -236,6 +242,8 @@ Cet élément est central pour l’analyse dynamique et pour la Task 4, car il p
 
 # 2. Analyse de menu_main.xml
 
+<p align="center"> <img src="images/a8.png" width="800"> </p>
+
 Fichier analysé :  
 `res/menu/menu_main.xml`
 
@@ -260,6 +268,7 @@ Conclusion : aucun risque détecté.
 ---
 
 # 3. Analyse de styles.xml
+<p align="center"> <img src="images/a22.png" width="800"> </p>
 
 Fichier analysé :  
 `res/values/styles.xml`
@@ -287,6 +296,7 @@ Conclusion : aucun risque identifié.
 ---
 
 # 4. Analyse de dimens.xml
+<p align="center"> <img src="images/a23.png" width="800"> </p>
 
 Fichier analysé :  
 `res/values/dimens.xml`
@@ -340,6 +350,8 @@ Risque : faible.
 ## Source Code - Analyse du code Java (MainActivity)
 
 ---
+<p align="center"> <img src="images/a9.png" width="800"> </p>
+<p align="center"> <img src="images/a10.png" width="800"> </p>
 
 # 1. Localisation et rôle de la classe
 
@@ -525,10 +537,6 @@ Dans une application réelle, ce serait une faiblesse majeure si cette logique r
 
 ---
 
-# Lab AB4 — Vérification Task 3 (Analyse avec JADX GUI)
-
----
-
 # Check — Task 3 (JADX GUI)
 
 ## 1. Package principal et version identifiés
@@ -628,10 +636,10 @@ Statut : OK
 
 ---
  
-# Task 4 — Observations complémentaires (Code Java)
+# Task 4 — Observations complémentaires (Code Java)-Recherche
 
 ---
-
+<p align="center"> <img src="images/a11.png" width="800"> </p>
 # Observation 1 — Utilisation de SecretKeySpec (Cryptographie AES)
 
 ## Valeurs trouvées
@@ -701,7 +709,7 @@ Dans une application réelle, cela représenterait une faiblesse de sécurité s
 ---
 
 # Observation 3 — Détection debug
-
+<p align="center"> <img src="images/a12.png" width="800"> </p>
 ## Valeur trouvée
 
 ```java
@@ -730,7 +738,7 @@ Faible à Moyen
 ---
 
 # Observation 4 — Détection test-keys
-
+<p align="center"> <img src="images/a13.png" width="800"> </p>
 ## Valeur trouvée
 
 ```java
@@ -821,6 +829,7 @@ Transformer le bytecode Android (`classes.dex`) en fichier JAR afin de réaliser
 
 # 1. Extraction des fichiers DEX depuis l’APK
 
+<p align="center"> <img src="images/a15.png" width="800"> </p>
 Depuis le dossier de travail :
 
 ```
@@ -856,6 +865,8 @@ Observation :
 ---
 
 # 2. Conversion DEX → JAR
+<p align="center"> <img src="images/a16.png" width="800"> </p>
+<p align="center"> <img src="images/a17.png" width="800"> </p>
 
 L’outil `dex2jar` (version 2.4) a été utilisé pour convertir le fichier `classes.dex` en fichier JAR.
 
@@ -891,11 +902,7 @@ Comparer les différentes approches de décompilation afin d’obtenir une analy
 
 # 1. Lancement de JD-GUI
 
-Sous Windows :
-
-```bash
-start "" "C:\Path\to\jd-gui.exe"
-```
+<p align="center"> <img src="images/a18.png" width="800"> </p>
 
 Le fichier `app.jar` généré lors du Task 5 a été ouvert dans JD-GUI.
 
@@ -911,21 +918,13 @@ C:\APK-Analysis\app.jar
 
 Structure observée dans JD-GUI :
 
-```
-sg.vantagepoint
- ├── a
- │   ├── a.class
- │   ├── b.class
- │   └── c.class
- └── uncrackable1
-     ├── MainActivity.class
-     └── a.class
-```
+<p align="center"> <img src="images/a20.png" width="800"> </p>
 
 ---
 
-# 3. Classe comparée
+# 3. Classe comparée-MainActivity
 
+<p align="center"> <img src="images/a19.png" width="800"> </p>
 Classe analysée dans les deux outils :
 
 ```
@@ -1074,3 +1073,208 @@ Pour une analyse statique Android :
 - JD-GUI est un outil complémentaire utile pour vérifier la fidélité du bytecode.
 
 L’utilisation combinée des deux outils permet une analyse plus fiable, plus technique et plus complète.
+
+
+
+
+
+# Rapport d’Analyse Statique  
+## UnCrackable-Level1
+
+---
+
+## Informations générales
+
+- **Date d'analyse :** 01/03/2026  
+- **Analyste :** Hajar Chaira  
+- **APK analysé :** UnCrackable-Level1.apk  
+- **Version :** 1.0 (versionCode 1)  
+- **Package :** owasp.mstg.uncrackable1  
+- **Provenance :** OWASP MSTG Crackme (fourni par notre enseignant)
+
+### Outils utilisés
+
+- JADX GUI v1.5.5  
+- dex2jar v2.4  
+- JD-GUI (version standard Windows)
+
+---
+
+## Résumé exécutif
+
+L’analyse statique de l’application **UnCrackable-Level1** a permis d’identifier trois faiblesses potentielles de sécurité.
+
+Les principales préoccupations concernent :
+
+- L’utilisation d’un mode de chiffrement faible (AES/ECB)
+- La présence d’un mécanisme de détection root/debug contournable
+- L’activation de `android:allowBackup="true"`
+
+Le niveau de risque global est évalué comme **Moyen**.
+
+---
+
+## Actions prioritaires recommandées
+
+1. Remplacer `AES/ECB` par `AES/GCM` ou `AES/CBC` avec IV sécurisé.
+2. Supprimer ou renforcer les mécanismes anti-debug/root.
+3. Désactiver `android:allowBackup` en environnement de production.
+
+---
+
+## Constats détaillés
+
+### Constat #1 : Utilisation d’AES en mode ECB
+
+**Sévérité :** Moyenne
+
+#### Description
+
+Le code utilise l’algorithme :
+
+```text
+AES/ECB/PKCS7Padding
+```
+
+Le mode ECB est considéré comme cryptographiquement faible car il ne protège pas contre l’analyse de motifs répétitifs dans les blocs chiffrés.
+
+#### Localisation
+
+- Classe : `sg.vantagepoint.a.a`  
+- Utilisation de `SecretKeySpec` avec `"AES/ECB/PKCS7Padding"`
+
+#### Impact potentiel
+
+- Vulnérabilité à l’analyse de blocs répétitifs  
+- Faible résistance face à certaines attaques cryptographiques  
+
+#### Remédiation recommandée
+
+Utiliser :
+
+- `AES/GCM` (recommandé)
+- ou `AES/CBC` avec IV aléatoire sécurisé
+
+---
+
+### Constat #2 : Mécanisme anti-root et anti-debug contournable
+
+**Sévérité :** Moyenne
+
+#### Description
+
+Dans `MainActivity.onCreate()` :
+
+```java
+if (c.a() || c.b() || c.c()) {
+    a("Root detected!");
+}
+```
+
+Et :
+
+```java
+if (b.a(getApplicationContext())) {
+    a("App is debuggable!");
+}
+```
+
+Ces vérifications peuvent être contournées via :
+
+- Modification (patching) de l’APK
+- Hooking dynamique (ex. Frida)
+- Modification du bytecode
+
+#### Localisation
+
+- Classe : `sg.vantagepoint.uncrackable1.MainActivity`
+
+#### Impact potentiel
+
+- Bypass des protections de sécurité
+- Exécution de code modifié
+- Facilitation du reverse engineering
+
+#### Remédiation recommandée
+
+- Intégrer la Play Integrity API (ex-SafetyNet)
+- Implémenter des contrôles en code natif (NDK)
+- Ajouter des mécanismes de détection d’instrumentation (ex. détection Frida)
+
+---
+
+### Constat #3 : allowBackup activé
+
+**Sévérité :** Faible à Moyenne
+
+#### Description
+
+Dans `AndroidManifest.xml` :
+
+```xml
+android:allowBackup="true"
+```
+
+Cette configuration autorise la sauvegarde des données de l’application via ADB.
+
+#### Localisation
+
+- Fichier : `AndroidManifest.xml`
+
+#### Impact potentiel
+
+- Extraction de données locales
+- Récupération d’informations sensibles
+
+#### Remédiation recommandée
+
+Désactiver en production :
+
+```xml
+android:allowBackup="false"
+```
+
+---
+
+## Annexes
+
+### Permissions demandées
+
+Aucune permission déclarée dans le manifeste.
+
+---
+
+### Composants exportés
+
+**MainActivity**
+
+Export implicite via `intent-filter` :
+
+- Action : `android.intent.action.MAIN`
+- Category : `android.intent.category.LAUNCHER`
+
+---
+
+### Éléments supplémentaires observés
+
+- Application mono-activité
+- Logique de vérification du secret côté client
+- Code partiellement obfusqué (classes `a`, `b`, `c`)
+- Aucune URL distante détectée
+- Aucun token API détecté
+
+---
+
+## Conclusion générale
+
+L’application **UnCrackable-Level1** est conçue comme un exercice pédagogique de reverse engineering.
+
+Bien qu’elle ne présente pas de vulnérabilité critique en contexte réel de production, l’analyse a mis en évidence :
+
+- Un mode de chiffrement faible
+- Des protections anti-debug/root contournables
+- Une configuration `allowBackup` activée
+
+L’utilisation combinée de JADX et JD-GUI a permis une compréhension complète du fonctionnement interne de l’application.
+
+---
