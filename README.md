@@ -764,6 +764,7 @@ Moyen
 
 <p align="center"> <img src="images/a25.png" width="800"> </p>
 <p align="center"> <img src="images/a26.png" width="800"> </p>
+<p align="center"> <img src="images/a27.png" width="800"> </p>
 
 ##  Résultat obtenu
 En appliquant le bon déchiffrement AES, le texte clair (plaintext) est :
