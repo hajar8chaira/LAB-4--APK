@@ -760,6 +760,31 @@ cipher.init(2, secretKeySpec);
 
 Moyen
 
+## Analyse Cryptographique :
+
+<p align="center"> <img src="images/a25.png" width="800"> </p>
+<p align="center"> <img src="images/a26.png" width="800"> </p>
+
+##  Résultat obtenu
+En appliquant le bon déchiffrement AES, le texte clair (plaintext) est :
+
+**`I want to believe`**
+
+---
+
+## 1) Ce que montre le code (JADX)
+
+### a) La clé AES (KEY)
+Dans le code :
+
+`java
+b("8d127684cbc37c17616d806cf50473cc")`
+
+### b) Le ciphertext (texte chiffré):
+`Dans le code :
+Base64.decode("5UJiFctbmgbDoLXmpLl2mknno8HT4Lv8dlat8FxR2G0c=", 0)`
+Le ciphertext est une chaîne Base64 qui doit être décodée en bytes avant d’être passée à AES.
+
 ## Description du problème potentiel
 
 L’utilisation de AES en mode ECB est vulnérable aux attaques par analyse de blocs :
