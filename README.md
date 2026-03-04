@@ -933,6 +933,72 @@ Faible
 
 ---
 
+# OWASP MSTG – UnCrackable Level 1 (Analyse Root Detection)
+
+## Objectif
+Observer et documenter le comportement de l’application **UnCrackable Level 1** lorsqu’elle est exécutée sur un environnement **rooté**, puis analyser la logique de détection root côté application.
+
+---
+<p align="center"> <img src="images/a13.png" width="800"> </p>
+<p align="center"> <img src="images/a13.png" width="800"> </p>
+<p align="center"> <img src="images/a13.png" width="800"> </p>
+## 1) Comportement observé (environnement rooté)
+
+### Observation
+Au lancement de l’application sur un émulateur rooté, une alerte s’affiche :
+
+> **“Root detected!”**  
+> *This is unacceptable. The app is now going to exit.*
+
+### Impact
+- L’application se ferme immédiatement après l’affichage de l’alerte.
+- Le flux normal (écran “Enter the Secret String”) n’est pas accessible sur cet environnement.
+
+---
+
+## 2) Localisation du code de détection root
+
+### Point d’entrée
+La détection root est déclenchée depuis :
+
+- `sg.vantagepoint.uncrackable1.MainActivity#onCreate()`
+
+Extrait logique (simplifié) :
+
+`java
+if (c.a() || c.b() || c.c()) {
+    a("Root detected!");
+}`
+
+## Implémentation
+
+La logique de détection root est implémentée dans :
+
+- `sg.vantagepoint.a.c`
+
+---
+
+## Vérifications effectuées (vue fonctionnelle)
+
+Les contrôles sont répartis en trois méthodes :
+
+- `c.a()` : recherche d’un binaire **su** accessible (ex. via `PATH` / emplacements courants)
+- `c.b()` : vérifie si `Build.TAGS` contient **"test-keys"**
+- `c.c()` : recherche d’artefacts “root” connus (indicateurs classiques)
+
+> **Remarque :** ces vérifications sont typiquement utilisées pour détecter des environnements modifiés (root, build debug, etc.).
+
+---
+
+## Instrumentation (contexte de test)
+
+### Machine hôte
+- **OS :** Windows  
+- **Outils :** Python + `frida-tools` (installés via `pip`)
+
+### Émulateur
+- `adb` détecte correctement l’AVD  
+- Un `frida-server` correspondant au couple **(version Frida / ABI)** est déployé sur l’émulateur
 
 
 
