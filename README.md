@@ -445,8 +445,6 @@ Risque : faible.
 ## Source Code - Analyse du code Java (MainActivity)
 
 ---
-<p align="center"> <img src="images/a9.png" width="800"> </p>
-<p align="center"> <img src="images/a10.png" width="800"> </p>
 
 # 1. Localisation et rôle de la classe
 
@@ -939,9 +937,7 @@ Faible
 Observer et documenter le comportement de l’application **UnCrackable Level 1** lorsqu’elle est exécutée sur un environnement **rooté**, puis analyser la logique de détection root côté application.
 
 ---
-<p align="center"> <img src="images/a13.png" width="800"> </p>
-<p align="center"> <img src="images/a13.png" width="800"> </p>
-<p align="center"> <img src="images/a13.png" width="800"> </p>
+<p align="center"> <img src="frida/a1.png" width="400"> </p>
 ## 1) Comportement observé (environnement rooté)
 
 ### Observation
@@ -999,9 +995,39 @@ Les contrôles sont répartis en trois méthodes :
 ### Émulateur
 - `adb` détecte correctement l’AVD  
 - Un `frida-server` correspondant au couple **(version Frida / ABI)** est déployé sur l’émulateur
+<p align="center"> <img src="frida/a3.png" width="900"> </p>
+<p align="center"> <img src="frida/a4.png" width="800"> </p>
+<p align="center"> <img src="frida/a5.png" width="800"> </p>
+<p align="center"> <img src="frida/a6.png" width="800"> </p>
+<p align="center"> <img src="frida/a7.png" width="800"> </p>
+## Script utiliser :
+
+`fichier creer : bypass.js`
+
+` script
+
+    Java.perform(function () { 
+    var rootClass = Java.use("sg.vantagepoint.a.c");
+
+    rootClass.a.implementation = function () {
+        console.log("Bypassing c.a()");
+        return false;
+    };
+
+    rootClass.b.implementation = function () {
+        console.log("Bypassing c.b()");
+        return false;
+    };
+
+    rootClass.c.implementation = function () {
+        console.log("Bypassing c.c()");
+        return false;
+    };});`
 
 
-
+<p align="center"> <img src="frida/a9.png" width="700"> </p>
+# Apres Execution :
+## L’application se lance désormais normalement sans afficher "Root detected!".
 
 
 # Task 5 — Conversion DEX → JAR avec dex2jar
